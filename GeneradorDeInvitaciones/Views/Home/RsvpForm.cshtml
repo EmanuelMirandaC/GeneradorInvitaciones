@@ -1,0 +1,45 @@
+﻿@model GeneradorDeInvitaciones.Models.RespuestaInvitado
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
+    <title>Formulario de inscripción</title>
+</head>
+<body>
+    <center>
+        <h1>Favor rellene todos los campos obligatorios</h1>
+        <br></br>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(); // Validacion de errores en el formulario
+            <p>Nombre: @Html.TextBoxFor(x => x.nombre)</p>
+            <p>Correo: @Html.TextBoxFor(x => x.correo)</p>
+            <p>Teléfono: @Html.TextBoxFor(x => x.telefono)</p>
+            <p>
+                ¿Asistirás?
+                @Html.DropDownListFor(x => x.asistira, new[]{
+                    new SelectListItem(){ Text = "Si, asistire", Value = bool.TrueString},
+                     new SelectListItem(){ Text = "No, no asistire", Value = bool.FalseString}
+                    }, "Elige una opcion")
+
+            </p>
+            <input class="btn btn-primary" type="submit" value="Enviar formulario" />
+
+        }
+    </center>
+
+</body>
+</html>

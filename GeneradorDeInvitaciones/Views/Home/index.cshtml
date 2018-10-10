@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>@ViewBag.saludo</h2>
+        <br> Para inscribirse, favor rellenar el siguiente formulario:  </br>
+        @Html.ActionLink("Ir al formulario", "RsvpForm")
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+﻿@model GeneradorDeInvitaciones.Models.RespuestaInvitado
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+    <title>Formulario de inscripción</title>
+</head>
+<body>
+
+
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp.live.com";
+            WebMail.SmtpPort = 25;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "e.miranda2@alumnos.santotomas.cl";
+            WebMail.Password = "*******";
+            WebMail.From = "e.miranda2@alumnos.santotomas.cl";
+            WebMail.Send("emanuel.miranda.c@gmail.com", "Confirmacion de asistencia", Model.nombre 
+                + ((Model.asistira ?? false) ? "" : " no ") + "asistira");
+
+        }
+        catch (Exception)
+        {
+        @:<b>No se pudo enviar notificacion</b>
+        }
+    }
+          <div class="text-center">
+              <h1>Gracias por su respuesta @Model.nombre</h1>
+          </div>
+
+
+</body>
+</html>
